@@ -49,3 +49,9 @@ incorrectly.
 
 Added put_unsigned function for sending numeric values to the station as a
 single byte of data.
+
+1.1.1 1/02/04
+
+Bugfix release.  Re-did lots of stuff in the test.pl script.  Added output to
+a test.log file to make debugging problems easier. 
+

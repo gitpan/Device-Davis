@@ -25,7 +25,7 @@ our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
 
 our @EXPORT = qw(station_open put_string get_char crc_accum put_unsigned
 );
-our $VERSION = '1.1';
+our $VERSION = '1.1.1';
 
 bootstrap Device::Davis $VERSION;
 
