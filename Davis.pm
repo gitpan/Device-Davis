@@ -25,7 +25,7 @@ our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
 
 our @EXPORT = qw(station_open put_string get_char crc_accum put_unsigned
 );
-our $VERSION = '1.1.1';
+our $VERSION = '1.2';
 
 bootstrap Device::Davis $VERSION;
 
@@ -112,6 +112,7 @@ Stan Sander stsander@earthlink.net
 =head1 CREDITS
 
 I used as an example the source code for the getweather utility written by Lew Riley (rileyle@earlham.edu http://www.cs.earlham.edu/~weather/).  The Serial Programming Guide for Posix Operating Systems currently maintained by Michael R. Sweet (http://www.easysw.com/~mike/serial/serial.htm) was invaluable as a reference.  
+Wes Young also provided a patch to allow the module to work on a Mac.
 
 =head1 SEE ALSO
 

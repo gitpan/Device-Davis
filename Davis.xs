@@ -87,10 +87,14 @@ station_open(tty)
 	    int fd;
 	    fd = open(tty, O_RDWR | O_NOCTTY);
 	    if (fd < 0) { perror(tty); };
-	    newtio.c_cflag = B19200 | CS8 | CLOCAL | CREAD;
-	    newtio.c_lflag = 0;
-	    newtio.c_iflag = IGNPAR;
-	    tcsetattr(fd, TCSANOW, &newtio);
+            newtio.c_cflag = CS8 | CLOCAL | CREAD | CSIZE;
+            newtio.c_oflag = 0;
+            newtio.c_lflag = 0;
+            newtio.c_iflag = IGNPAR;
+            newtio.c_cc[VTIME] = 10;
+            newtio.c_cc[VMIN] = 1;
+            cfsetspeed(&newtio, B19200);
+            tcsetattr(fd, TCSANOW, &newtio); 
 	    RETVAL = fd;
 	OUTPUT:
 	    RETVAL

@@ -55,3 +55,7 @@ single byte of data.
 Bugfix release.  Re-did lots of stuff in the test.pl script.  Added output to
 a test.log file to make debugging problems easier. 
 
+1.2  8/7/04
+
+Incorporated a patch by Wes Young.  This enables the module to function 
+correctly on a Mac (OS X) platform.   
