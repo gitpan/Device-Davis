@@ -23,10 +23,9 @@ our %EXPORT_TAGS = ( 'all' => [ qw(
 
 our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
 
-our @EXPORT = qw(station_open put_string get_char crc_accum
-	
+our @EXPORT = qw(station_open put_string get_char crc_accum put_unsigned
 );
-our $VERSION = '1.01';
+our $VERSION = '1.1';
 
 bootstrap Device::Davis $VERSION;
 
@@ -49,6 +48,7 @@ Device::Davis - Perl extension for communicating with Davis weather stations
   put_string($fd, "$string");
   $char = get_char($fd);
   $crc = crc_accum($crc, $data_byte);
+  put_unsigned($fd, $num);
 
 =head1 DESCRIPTION
 
@@ -61,6 +61,8 @@ B<put_string()> takes a file descriptor (NOT a perl filehandle) and the string t
 B<get_char()> takes a file descriptor as an argument and retuns 1 byte from the weather station.  
 
 B<crc_accum()> is an accumulator for the crc calculation.  It takes the previous value of the crc that has been accumulated ($crc) and the new data byte that needs to be added to the accumulated total.  Be sure to initialize $crc to 0 before sending a new set of data bytes.  The function will return the new accumulated crc value.  Once you pass in the crc value received from the weather station, the function should return a 0 if the crc check passed.  If you are sending commands to the station, the last value returned by the function should be what you send to the station as the crc value.  Note that the station expects the most significant byte of the crc to be sent first, which is opposite of how regular data values are sent.  
+
+B<put_unsigned()> is for sending numeric values to the station.  It takes the file descriptor and the character to send as arguments.  It will send it's argument as a one byte unsigned character.  It will return the number of bytes written. 
 
 =head1 EXAMPLES
 
@@ -94,14 +96,14 @@ We will want to calculate the value for the crc by running each byte we will sen
 Let's say at this point that the value of $crc is e2b4.  If we are sending a command to the weather station, we should send e2b4 (most significant byte first) to the station.  
 
 	$msbyte = $crc >> 8;  # For our example equals e2
-	put_string($fd, "$msbyte");
+	put_unsigned($fd, $msbyte);
 	$lsbyte = $crc << 24;
 	$lsbyte = $lsbyte >> 24;  # For our example equals b4
-	put_string($fd, "$lsbyte");
+	put_unsigned($fd, $lsbyte);
 
 =head2 EXPORT
 
-station_open(), put_string(), get_char(), crc_accum()
+station_open(), put_string(), get_char(), crc_accum(), put_unsigned()
 
 =head1 AUTHOR
 

@@ -44,3 +44,8 @@ should follow shortly in the scripts area.
 
 Minor bugfix release.  Fixed error in test.pl script that called the module 
 incorrectly.  
+
+1.1 12/31/03
+
+Added put_unsigned function for sending numeric values to the station as a
+single byte of data.

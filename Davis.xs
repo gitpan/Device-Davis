@@ -94,3 +94,14 @@ station_open(tty)
 	    RETVAL = fd;
 	OUTPUT:
 	    RETVAL
+
+int
+put_unsigned(fd,uc)
+    int fd;
+    unsigned char uc;
+        CODE:
+            int b;
+            b = write(fd, &uc, 1);
+            RETVAL = b;
+        OUTPUT:
+            RETVAL
