@@ -8,7 +8,7 @@
 
 BEGIN { $| = 1; print "1..4\n"; }
 END {print "not ok 1\n" unless $loaded;}
-use Davis;
+use Device::Davis;
 $loaded = 1;
 print "ok 1\n";
 

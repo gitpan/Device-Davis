@@ -39,3 +39,8 @@ written using POSIX calls from perl didn't quite do the right things.
 
 Seperated the module and the daemon.  Uploaded the module to CPAN.  Daemon 
 should follow shortly in the scripts area.  
+
+1.01 12/24/03
+
+Minor bugfix release.  Fixed error in test.pl script that called the module 
+incorrectly.  
