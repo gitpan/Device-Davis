@@ -25,7 +25,7 @@ our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
 
 our @EXPORT = qw(station_open put_string get_char crc_accum put_unsigned
 );
-our $VERSION = '1.2';
+our $VERSION = '1.2.1';
 
 bootstrap Device::Davis $VERSION;
 
@@ -107,7 +107,7 @@ station_open(), put_string(), get_char(), crc_accum(), put_unsigned()
 
 =head1 AUTHOR
 
-Stan Sander stsander@earthlink.net
+Stan Sander stsander@sblan.net
 
 =head1 CREDITS
 
