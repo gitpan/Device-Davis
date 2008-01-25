@@ -59,3 +59,7 @@ a test.log file to make debugging problems easier.
 
 Incorporated a patch by Wes Young.  This enables the module to function 
 correctly on a Mac (OS X) platform.   
+
+1.2.2
+
+Made some changes in order to be CPAN tester friendly.

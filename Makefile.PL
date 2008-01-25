@@ -1,6 +1,10 @@
 use ExtUtils::MakeMaker;
 # See lib/ExtUtils/MakeMaker.pm for details of how to influence
 # the contents of the Makefile that is written.
+    if ( $ENV{AUTOMATED_TESTING} ) {
+        warn "Can't run under automated testing\n";
+        exit 0;
+    }
 WriteMakefile(
     'NAME'		=> 'Device::Davis',
     'VERSION_FROM'	=> 'Davis.pm', # finds $VERSION
