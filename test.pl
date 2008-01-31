@@ -21,6 +21,10 @@ my ($user,$system,$cuser,$csystem) = times();
 use POSIX;
 use POSIX qw(:errno_h :fcntl_h strftime);
 open(LOG, ">test.log") or die "Unable to create test.log file $!\n";
+if ( $ENV{AUTOMATED_TESTING} ) {
+ print "Skipping 2\n";
+ print "Skipping 3\n";
+}else{ 
 print "Enter the full path to the tty to use (i.e. /dev/tty??)  ";
 my $tty = <>;
 chomp($tty);
@@ -107,6 +111,7 @@ if($response eq 'TEST'){
 	print LOG "Packed response from TEST was $response\n";
 	print "not ok 3\n"; 
 	$failed = 1; 
+};
 };
 my $old_crc = 0;
 my $crc = 0;
